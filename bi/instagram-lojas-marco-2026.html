@@ -1,1 +1,470 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BI Instagram Lojas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#ffffff;--card:#ffffff;--c2:#f1f5f9;--acc:#0f172a;--org:#f97316;--org2:#fb923c;--txt:#334155;--mut:#64748b;--brd:#e2e8f0;--grn:#10b981;--red:#ef4444;--ig:#db2777}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;overflow-x:hidden}.hdr{background:var(--acc);color:#fff;display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap}.hdr h1{font-family:'Sora',sans-serif;font-size:16px;font-weight:800;letter-spacing:-.02em}.hdr p{font-size:11px;color:rgba(255,255,255,.68);margin-top:2px}.hdr .sp{flex:1}.badge-y{background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.2);white-space:nowrap}.tabs{display:flex;background:var(--acc);padding:0 12px;position:sticky;top:0;z-index:100;overflow-x:auto;gap:4px}.tab{padding:11px 12px;cursor:pointer;color:rgba(255,255,255,.6);font-weight:700;font-size:12px;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;font-family:'Sora',sans-serif}.tab.active{color:#fff;border-bottom-color:var(--org);background:rgba(255,255,255,.05)}.page{display:none;padding:16px;max-width:1400px;margin:0 auto}.page.active{display:block}.ph{margin-bottom:20px;background:#f8fafc;color:var(--acc);border-radius:12px;padding:20px;border:1px solid var(--brd)}.ph h1{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--acc);line-height:1.2}.ph p{color:var(--mut);font-size:12px;margin-top:6px}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}.kpi{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:14px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,.04);border-top:3px solid var(--org)}.kpi .lb{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:800}.kpi .vl{font-size:22px;font-weight:800;color:var(--acc);line-height:1;font-family:'Sora',sans-serif}.kpi .sb{font-size:10px;color:var(--mut);margin-top:6px;font-weight:600;display:inline-block;background:var(--c2);padding:2px 6px;border-radius:4px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}.card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.card h3{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;font-weight:800;font-family:'Sora',sans-serif}.at{border-top:3px solid var(--acc)}.ot{border-top:3px solid var(--org)}.gt{border-top:3px solid var(--grn)}.rl{list-style:none}.rl li{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9}.rn{width:22px;height:22px;background:var(--c2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:10px;color:var(--mut);flex-shrink:0}.rn.t3{background:var(--acc);color:#fff}.ri{flex:1;min-width:0}.rna{font-weight:700;font-size:12px;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rsu{font-size:10px;color:var(--mut);margin-top:1px}.rbw{flex:1}.rbb{background:#f1f5f9;border-radius:10px;height:6px;overflow:hidden}.rbf{height:100%;border-radius:10px;background:var(--org)}.rv{font-size:11px;font-weight:800;color:var(--acc);white-space:nowrap;min-width:58px;text-align:right}.tw{overflow-x:auto;border-radius:8px;border:1px solid var(--brd);-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;font-size:11px}th{background:#f8fafc;color:var(--mut);text-align:left;padding:10px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:800;border-bottom:1px solid var(--brd);font-family:'Sora',sans-serif;white-space:nowrap;position:sticky;top:0;z-index:1}td{padding:8px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;color:var(--txt);white-space:nowrap}tr:hover td{background:#f8fafc}.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}.lk{color:var(--org);text-decoration:none;font-weight:700}.slbl{font-size:11px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em;margin:28px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--brd);font-weight:800;font-family:'Sora',sans-serif}.srch{width:100%;background:#fff;border:1px solid var(--brd);border-radius:8px;padding:10px 14px;color:var(--acc);font-size:13px;margin-bottom:14px}.cw{position:relative;height:260px;width:100%}.pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:999px;font-size:10px;font-weight:800;background:rgba(249,115,22,.12);color:var(--org)}@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}.rbw{display:none}.hdr{padding:12px 14px}.page{padding:12px}.kpis{grid-template-columns:1fr 1fr}.cw{height:220px}}
+</style>
+</head>
+<body>
+<div class="hdr"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">📚</span><div><h1>Livraria Leitura</h1><p></p></div></div><div class="sp"></div><span class="badge-y">DASHBOARD AUTOMÁTICO</span></div>
+<div class="tabs"><div class="tab active" onclick="go(0)">📊 Ranking Geral</div><div class="tab" onclick="go(1)">🏪 Todas as Lojas</div><div class="tab" onclick="go(2)">🎬 Top Posts</div></div>
+<div class="page active" id="p0">
+  <div class="ph"><h1>BI Instagram</h1><p>Atualizado em 21/05/2026, 15:48:59 · dados lidos da planilha </p></div>
+  <div class="kpis">
+    <div class="kpi"><div class="lb">Lojas analisadas</div><div class="vl">73</div><div class="sb">perfis com registros</div></div>
+    <div class="kpi"><div class="lb">Publicações</div><div class="vl">1,4K</div><div class="sb">linhas válidas</div></div>
+    <div class="kpi"><div class="lb">Alcance / Views</div><div class="vl">6,7M</div><div class="sb">soma de views</div></div>
+    <div class="kpi"><div class="lb">Engajamento</div><div class="vl">512,4K</div><div class="sb">curtidas + comentários</div></div>
+    <div class="kpi"><div class="lb">Taxa geral</div><div class="vl">7,60%</div><div class="sb">engajamento/views</div></div>
+    <div class="kpi"><div class="lb">Comentários</div><div class="vl">53,7K</div><div class="sb">total na base</div></div>
+  </div>
+  <div class="slbl">🏬 Ranking de lojas</div>
+  <div class="g2">
+    <div class="card at"><h3>🏆 Top 20 · Maior alcance</h3><ul class="rl"><li>
+      <span class="rn t3">1</span>
+      <div class="ri"><div class="rna">Leitura Campinas</div><div class="rsu">@leituracampinas · 63 posts · Eng: 195,6K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:100%"></div></div></div>
+      <div class="rv">1,7M</div>
+    </li><li>
+      <span class="rn t3">2</span>
+      <div class="ri"><div class="rna">Leitura Amazonas</div><div class="rsu">@leitura.amazonas · 33 posts · Eng: 35,1K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:69%"></div></div></div>
+      <div class="rv">1,2M</div>
+    </li><li>
+      <span class="rn t3">3</span>
+      <div class="ri"><div class="rna">Leitura Taubaté</div><div class="rsu">@leiturataubate · 26 posts · Eng: 90,4K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:51%"></div></div></div>
+      <div class="rv">891,5K</div>
+    </li><li>
+      <span class="rn ">4</span>
+      <div class="ri"><div class="rna">Leitura Uberlândia</div><div class="rsu">@leiturauberlandia · 5 posts · Eng: 456</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:28%"></div></div></div>
+      <div class="rv">487,5K</div>
+    </li><li>
+      <span class="rn ">5</span>
+      <div class="ri"><div class="rna">Leitura BH</div><div class="rsu">@leitura.bh · 32 posts · Eng: 15,4K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:20%"></div></div></div>
+      <div class="rv">345,0K</div>
+    </li><li>
+      <span class="rn ">6</span>
+      <div class="ri"><div class="rna">Leitura Nacional</div><div class="rsu">@livrarialeitura · 50 posts · Eng: 23,6K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:19%"></div></div></div>
+      <div class="rv">333,2K</div>
+    </li><li>
+      <span class="rn ">7</span>
+      <div class="ri"><div class="rna">Leitura Rio de Janeiro</div><div class="rsu">@leiturarj · 24 posts · Eng: 17,4K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:16%"></div></div></div>
+      <div class="rv">283,4K</div>
+    </li><li>
+      <span class="rn ">8</span>
+      <div class="ri"><div class="rna">Leitura Recife</div><div class="rsu">@leiturarecife · 28 posts · Eng: 10,3K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:12%"></div></div></div>
+      <div class="rv">205,1K</div>
+    </li><li>
+      <span class="rn ">9</span>
+      <div class="ri"><div class="rna">Leitura João Pessoa</div><div class="rsu">@leiturajp · 27 posts · Eng: 15,8K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:10%"></div></div></div>
+      <div class="rv">181,0K</div>
+    </li><li>
+      <span class="rn ">10</span>
+      <div class="ri"><div class="rna">Leitura Campina Grande</div><div class="rsu">@leituracg · 28 posts · Eng: 14,0K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:10%"></div></div></div>
+      <div class="rv">170,4K</div>
+    </li><li>
+      <span class="rn ">11</span>
+      <div class="ri"><div class="rna">Leitura Natal</div><div class="rsu">@leituranatal · 17 posts · Eng: 7,3K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:7%"></div></div></div>
+      <div class="rv">130,5K</div>
+    </li><li>
+      <span class="rn ">12</span>
+      <div class="ri"><div class="rna">Leitura Caruaru</div><div class="rsu">@leituracaruaru · 27 posts · Eng: 5,6K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:7%"></div></div></div>
+      <div class="rv">128,3K</div>
+    </li><li>
+      <span class="rn ">13</span>
+      <div class="ri"><div class="rna">Leitura Iguatemi Fortaleza</div><div class="rsu">@leituraiguatemi · 13 posts · Eng: 1,9K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:4%"></div></div></div>
+      <div class="rv">64,3K</div>
+    </li><li>
+      <span class="rn ">14</span>
+      <div class="ri"><div class="rna">Leitura Olinda</div><div class="rsu">@leituraolinda · 24 posts · Eng: 3,2K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:4%"></div></div></div>
+      <div class="rv">61,9K</div>
+    </li><li>
+      <span class="rn ">15</span>
+      <div class="ri"><div class="rna">Leitura Maceió</div><div class="rsu">@leituramaceio · 53 posts · Eng: 2,5K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">49,2K</div>
+    </li><li>
+      <span class="rn ">16</span>
+      <div class="ri"><div class="rna">Leitura Aracaju</div><div class="rsu">@leitura.aracaju · 41 posts · Eng: 1,5K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">48,8K</div>
+    </li><li>
+      <span class="rn ">17</span>
+      <div class="ri"><div class="rna">Leitura Piracicaba</div><div class="rsu">@leiturapiracicaba · 31 posts · Eng: 629</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">35,3K</div>
+    </li><li>
+      <span class="rn ">18</span>
+      <div class="ri"><div class="rna">Leitura Mogi</div><div class="rsu">@leituramogi · 12 posts · Eng: 6,6K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">35,0K</div>
+    </li><li>
+      <span class="rn ">19</span>
+      <div class="ri"><div class="rna">Leitura Interlagos</div><div class="rsu">@leiturainterlagos · 16 posts · Eng: 45,2K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">33,6K</div>
+    </li><li>
+      <span class="rn ">20</span>
+      <div class="ri"><div class="rna">Leitura Brasília</div><div class="rsu">@leiturabrasilia · 30 posts · Eng: 799</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">25,0K</div>
+    </li></ul></div>
+    <div class="card gt"><h3>💬 Top 20 · Maior engajamento</h3><ul class="rl"><li>
+      <span class="rn t3">1</span>
+      <div class="ri"><div class="rna">Leitura Campinas</div><div class="rsu">@leituracampinas · 63 posts · Alcance: 1,7M</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:100%"></div></div></div>
+      <div class="rv">195,6K</div>
+    </li><li>
+      <span class="rn t3">2</span>
+      <div class="ri"><div class="rna">Leitura Taubaté</div><div class="rsu">@leiturataubate · 26 posts · Alcance: 891,5K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:46%"></div></div></div>
+      <div class="rv">90,4K</div>
+    </li><li>
+      <span class="rn t3">3</span>
+      <div class="ri"><div class="rna">Leitura Interlagos</div><div class="rsu">@leiturainterlagos · 16 posts · Alcance: 33,6K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:23%"></div></div></div>
+      <div class="rv">45,2K</div>
+    </li><li>
+      <span class="rn ">4</span>
+      <div class="ri"><div class="rna">Leitura Amazonas</div><div class="rsu">@leitura.amazonas · 33 posts · Alcance: 1,2M</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:18%"></div></div></div>
+      <div class="rv">35,1K</div>
+    </li><li>
+      <span class="rn ">5</span>
+      <div class="ri"><div class="rna">Leitura Nacional</div><div class="rsu">@livrarialeitura · 50 posts · Alcance: 333,2K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:12%"></div></div></div>
+      <div class="rv">23,6K</div>
+    </li><li>
+      <span class="rn ">6</span>
+      <div class="ri"><div class="rna">Leitura Rio de Janeiro</div><div class="rsu">@leiturarj · 24 posts · Alcance: 283,4K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:9%"></div></div></div>
+      <div class="rv">17,4K</div>
+    </li><li>
+      <span class="rn ">7</span>
+      <div class="ri"><div class="rna">Leitura João Pessoa</div><div class="rsu">@leiturajp · 27 posts · Alcance: 181,0K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:8%"></div></div></div>
+      <div class="rv">15,8K</div>
+    </li><li>
+      <span class="rn ">8</span>
+      <div class="ri"><div class="rna">Leitura BH</div><div class="rsu">@leitura.bh · 32 posts · Alcance: 345,0K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:8%"></div></div></div>
+      <div class="rv">15,4K</div>
+    </li><li>
+      <span class="rn ">9</span>
+      <div class="ri"><div class="rna">Leitura Campina Grande</div><div class="rsu">@leituracg · 28 posts · Alcance: 170,4K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:7%"></div></div></div>
+      <div class="rv">14,0K</div>
+    </li><li>
+      <span class="rn ">10</span>
+      <div class="ri"><div class="rna">Leitura Recife</div><div class="rsu">@leiturarecife · 28 posts · Alcance: 205,1K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:5%"></div></div></div>
+      <div class="rv">10,3K</div>
+    </li><li>
+      <span class="rn ">11</span>
+      <div class="ri"><div class="rna">Leitura Natal</div><div class="rsu">@leituranatal · 17 posts · Alcance: 130,5K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:4%"></div></div></div>
+      <div class="rv">7,3K</div>
+    </li><li>
+      <span class="rn ">12</span>
+      <div class="ri"><div class="rna">Leitura Mogi</div><div class="rsu">@leituramogi · 12 posts · Alcance: 35,0K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">6,6K</div>
+    </li><li>
+      <span class="rn ">13</span>
+      <div class="ri"><div class="rna">Leitura Caruaru</div><div class="rsu">@leituracaruaru · 27 posts · Alcance: 128,3K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">5,6K</div>
+    </li><li>
+      <span class="rn ">14</span>
+      <div class="ri"><div class="rna">Leitura Olinda</div><div class="rsu">@leituraolinda · 24 posts · Alcance: 61,9K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">3,2K</div>
+    </li><li>
+      <span class="rn ">15</span>
+      <div class="ri"><div class="rna">Leitura Maceió</div><div class="rsu">@leituramaceio · 53 posts · Alcance: 49,2K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">2,5K</div>
+    </li><li>
+      <span class="rn ">16</span>
+      <div class="ri"><div class="rna">Leitura Anápolis</div><div class="rsu">@leituraanapolis · 11 posts · Alcance: 6,0K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">2,0K</div>
+    </li><li>
+      <span class="rn ">17</span>
+      <div class="ri"><div class="rna">Leitura Iguatemi Fortaleza</div><div class="rsu">@leituraiguatemi · 13 posts · Alcance: 64,3K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">1,9K</div>
+    </li><li>
+      <span class="rn ">18</span>
+      <div class="ri"><div class="rna">Leitura Aracaju</div><div class="rsu">@leitura.aracaju · 41 posts · Alcance: 48,8K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">1,5K</div>
+    </li><li>
+      <span class="rn ">19</span>
+      <div class="ri"><div class="rna">Leitura North Fortaleza</div><div class="rsu">@leituranorthfortaleza · 13 posts · Alcance: 18,7K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">1,4K</div>
+    </li><li>
+      <span class="rn ">20</span>
+      <div class="ri"><div class="rna">Leitura Salvador</div><div class="rsu">@leiturasalvador · 23 posts · Alcance: 17,1K</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:2%"></div></div></div>
+      <div class="rv">1,2K</div>
+    </li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>Alcance por loja · Top 10</h3><div class="cw"><canvas id="chViews"></canvas></div></div>
+    <div class="card"><h3>Engajamento por loja · Top 10</h3><div class="cw"><canvas id="chEng"></canvas></div></div>
+  </div>
+  <div class="g2">
+    <div class="card ot"><h3>⚡ Top 20 · Melhor taxa de engajamento</h3><ul class="rl"><li>
+      <span class="rn t3">1</span>
+      <div class="ri"><div class="rna">Leitura Del Paseo</div><div class="rsu">@leituradelpaseo · 1,0K eng · 289 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:100%"></div></div></div>
+      <div class="rv">357,44%</div>
+    </li><li>
+      <span class="rn t3">2</span>
+      <div class="ri"><div class="rna">Leitura Interlagos</div><div class="rsu">@leiturainterlagos · 45,2K eng · 33,6K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:38%"></div></div></div>
+      <div class="rv">134,62%</div>
+    </li><li>
+      <span class="rn t3">3</span>
+      <div class="ri"><div class="rna">Leitura SB Plaza</div><div class="rsu">@leiturasbplaza · 402 eng · 709 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:16%"></div></div></div>
+      <div class="rv">56,70%</div>
+    </li><li>
+      <span class="rn ">4</span>
+      <div class="ri"><div class="rna">Leitura Mooca</div><div class="rsu">@leituramooca · 51 eng · 142 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:10%"></div></div></div>
+      <div class="rv">35,92%</div>
+    </li><li>
+      <span class="rn ">5</span>
+      <div class="ri"><div class="rna">Leitura Travel Guarulhos</div><div class="rsu">@leituratravelguarulhos · 76 eng · 220 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:10%"></div></div></div>
+      <div class="rv">34,55%</div>
+    </li><li>
+      <span class="rn ">6</span>
+      <div class="ri"><div class="rna">Leitura Anápolis</div><div class="rsu">@leituraanapolis · 2,0K eng · 6,0K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:10%"></div></div></div>
+      <div class="rv">33,97%</div>
+    </li><li>
+      <span class="rn ">7</span>
+      <div class="ri"><div class="rna">Leitura Mestre Álvaro</div><div class="rsu">@mestrealvaro_leitura · 63 eng · 200 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:9%"></div></div></div>
+      <div class="rv">31,50%</div>
+    </li><li>
+      <span class="rn ">8</span>
+      <div class="ri"><div class="rna">Leitura São José dos Campos</div><div class="rsu">@leitura.sjc · 271 eng · 1,0K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:8%"></div></div></div>
+      <div class="rv">26,94%</div>
+    </li><li>
+      <span class="rn ">9</span>
+      <div class="ri"><div class="rna">Leitura Osasco</div><div class="rsu">@leituraosasco · 157 eng · 818 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:5%"></div></div></div>
+      <div class="rv">19,19%</div>
+    </li><li>
+      <span class="rn ">10</span>
+      <div class="ri"><div class="rna">Leitura Mogi</div><div class="rsu">@leituramogi · 6,6K eng · 35,0K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:5%"></div></div></div>
+      <div class="rv">18,98%</div>
+    </li><li>
+      <span class="rn ">11</span>
+      <div class="ri"><div class="rna">Leitura Indaiatuba</div><div class="rsu">@leituraindaiatuba · 155 eng · 835 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:5%"></div></div></div>
+      <div class="rv">18,56%</div>
+    </li><li>
+      <span class="rn ">12</span>
+      <div class="ri"><div class="rna">Leitura Shopping Light</div><div class="rsu">@leiturashoppinglight · 301 eng · 1,8K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:5%"></div></div></div>
+      <div class="rv">16,43%</div>
+    </li><li>
+      <span class="rn ">13</span>
+      <div class="ri"><div class="rna">Leitura West Plaza</div><div class="rsu">@leiturawestplaza · 34 eng · 221 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:4%"></div></div></div>
+      <div class="rv">15,38%</div>
+    </li><li>
+      <span class="rn ">14</span>
+      <div class="ri"><div class="rna">Leitura Contagem</div><div class="rsu">@leiturashoppingcontagem · 254 eng · 1,9K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:4%"></div></div></div>
+      <div class="rv">13,11%</div>
+    </li><li>
+      <span class="rn ">15</span>
+      <div class="ri"><div class="rna">Leitura Goiânia</div><div class="rsu">@leitura.goiania · 621 eng · 5,1K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">12,29%</div>
+    </li><li>
+      <span class="rn ">16</span>
+      <div class="ri"><div class="rna">Leitura Campinas</div><div class="rsu">@leituracampinas · 195,6K eng · 1,7M views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">11,21%</div>
+    </li><li>
+      <span class="rn ">17</span>
+      <div class="ri"><div class="rna">Leitura Jardim Sul</div><div class="rsu">@leiturajardimsul · 160 eng · 1,5K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">10,68%</div>
+    </li><li>
+      <span class="rn ">18</span>
+      <div class="ri"><div class="rna">Leitura SP Market</div><div class="rsu">@leituraspmarket · 84 eng · 808 views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">10,40%</div>
+    </li><li>
+      <span class="rn ">19</span>
+      <div class="ri"><div class="rna">Leitura Taubaté</div><div class="rsu">@leiturataubate · 90,4K eng · 891,5K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">10,15%</div>
+    </li><li>
+      <span class="rn ">20</span>
+      <div class="ri"><div class="rna">Leitura Belém</div><div class="rsu">@leitura.belem · 632 eng · 6,7K views</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:3%"></div></div></div>
+      <div class="rv">9,40%</div>
+    </li></ul></div>
+    <div class="card"><h3>📝 Top 20 · Mais publicações</h3><ul class="rl"><li>
+      <span class="rn t3">1</span>
+      <div class="ri"><div class="rna">Leitura Campinas</div><div class="rsu">@leituracampinas · 1,7M views · 195,6K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:100%"></div></div></div>
+      <div class="rv">63</div>
+    </li><li>
+      <span class="rn t3">2</span>
+      <div class="ri"><div class="rna">Leitura Maceió</div><div class="rsu">@leituramaceio · 49,2K views · 2,5K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:84%"></div></div></div>
+      <div class="rv">53</div>
+    </li><li>
+      <span class="rn t3">3</span>
+      <div class="ri"><div class="rna">Leitura Nacional</div><div class="rsu">@livrarialeitura · 333,2K views · 23,6K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:79%"></div></div></div>
+      <div class="rv">50</div>
+    </li><li>
+      <span class="rn ">4</span>
+      <div class="ri"><div class="rna">Leitura Del Paseo</div><div class="rsu">@leituradelpaseo · 289 views · 1,0K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:75%"></div></div></div>
+      <div class="rv">47</div>
+    </li><li>
+      <span class="rn ">5</span>
+      <div class="ri"><div class="rna">Leitura Aracaju</div><div class="rsu">@leitura.aracaju · 48,8K views · 1,5K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:65%"></div></div></div>
+      <div class="rv">41</div>
+    </li><li>
+      <span class="rn ">6</span>
+      <div class="ri"><div class="rna">Leitura Rio Preto</div><div class="rsu">@leiturariopreto · 13,8K views · 1,1K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:63%"></div></div></div>
+      <div class="rv">40</div>
+    </li><li>
+      <span class="rn ">7</span>
+      <div class="ri"><div class="rna">Leitura Amazonas</div><div class="rsu">@leitura.amazonas · 1,2M views · 35,1K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:52%"></div></div></div>
+      <div class="rv">33</div>
+    </li><li>
+      <span class="rn ">8</span>
+      <div class="ri"><div class="rna">Leitura SB Plaza</div><div class="rsu">@leiturasbplaza · 709 views · 402 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:52%"></div></div></div>
+      <div class="rv">33</div>
+    </li><li>
+      <span class="rn ">9</span>
+      <div class="ri"><div class="rna">Leitura BH</div><div class="rsu">@leitura.bh · 345,0K views · 15,4K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:51%"></div></div></div>
+      <div class="rv">32</div>
+    </li><li>
+      <span class="rn ">10</span>
+      <div class="ri"><div class="rna">Leitura Piracicaba</div><div class="rsu">@leiturapiracicaba · 35,3K views · 629 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:49%"></div></div></div>
+      <div class="rv">31</div>
+    </li><li>
+      <span class="rn ">11</span>
+      <div class="ri"><div class="rna">Leitura Santana</div><div class="rsu">@leiturapartagesantana · 655 views · 49 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:49%"></div></div></div>
+      <div class="rv">31</div>
+    </li><li>
+      <span class="rn ">12</span>
+      <div class="ri"><div class="rna">Leitura Brasília</div><div class="rsu">@leiturabrasilia · 25,0K views · 799 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:48%"></div></div></div>
+      <div class="rv">30</div>
+    </li><li>
+      <span class="rn ">13</span>
+      <div class="ri"><div class="rna">Leitura Campina Grande</div><div class="rsu">@leituracg · 170,4K views · 14,0K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:44%"></div></div></div>
+      <div class="rv">28</div>
+    </li><li>
+      <span class="rn ">14</span>
+      <div class="ri"><div class="rna">Leitura Recife</div><div class="rsu">@leiturarecife · 205,1K views · 10,3K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:44%"></div></div></div>
+      <div class="rv">28</div>
+    </li><li>
+      <span class="rn ">15</span>
+      <div class="ri"><div class="rna">Leitura Contagem</div><div class="rsu">@leiturashoppingcontagem · 1,9K views · 254 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:44%"></div></div></div>
+      <div class="rv">28</div>
+    </li><li>
+      <span class="rn ">16</span>
+      <div class="ri"><div class="rna">Leitura Caruaru</div><div class="rsu">@leituracaruaru · 128,3K views · 5,6K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:43%"></div></div></div>
+      <div class="rv">27</div>
+    </li><li>
+      <span class="rn ">17</span>
+      <div class="ri"><div class="rna">Leitura Juiz de Fora</div><div class="rsu">@leiturajuizdefora · 11,8K views · 496 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:43%"></div></div></div>
+      <div class="rv">27</div>
+    </li><li>
+      <span class="rn ">18</span>
+      <div class="ri"><div class="rna">Leitura João Pessoa</div><div class="rsu">@leiturajp · 181,0K views · 15,8K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:43%"></div></div></div>
+      <div class="rv">27</div>
+    </li><li>
+      <span class="rn ">19</span>
+      <div class="ri"><div class="rna">Leitura Taubaté</div><div class="rsu">@leiturataubate · 891,5K views · 90,4K eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:41%"></div></div></div>
+      <div class="rv">26</div>
+    </li><li>
+      <span class="rn ">20</span>
+      <div class="ri"><div class="rna">Leitura Tatuapé</div><div class="rsu">@leituratatuape · 5,0K views · 368 eng</div></div>
+      <div class="rbw"><div class="rbb"><div class="rbf" style="width:40%"></div></div></div>
+      <div class="rv">25</div>
+    </li></ul></div>
+  </div>
+</div>
+<div class="page" id="p1">
+  <div class="ph"><h1>Todas as lojas</h1><p>Ordenação padrão por alcance. Use a busca para encontrar loja, perfil ou indicador.</p></div>
+  <input class="srch" id="qLojas" placeholder="🔍 Buscar loja ou perfil..." oninput="filterTable('qLojas','tbLojas')">
+  <div class="card"><div class="tw" style="max-height:650px"><table><thead><tr><th>#</th><th>Loja</th><th>Perfil</th><th class="num">Posts</th><th class="num">Alcance</th><th class="num">Curtidas</th><th class="num">Comentários</th><th class="num">Engajamento</th><th class="num">Taxa</th><th class="num">Média Views</th><th>Top post</th></tr></thead><tbody id="tbLojas">
+    <tr><td>1</td><td><strong>Leitura Campinas</strong></td><td>@leituracampinas</td><td class="num">63</td><td class="num">1,7M</td><td class="num">194,5K</td><td class="num">1,1K</td><td class="num">195,6K</td><td class="num">11,21%</td><td class="num">27,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWH9PM1EUjA/" target="_blank">abrir</a></td></tr><tr><td>2</td><td><strong>Leitura Amazonas</strong></td><td>@leitura.amazonas</td><td class="num">33</td><td class="num">1,2M</td><td class="num">34,4K</td><td class="num">692</td><td class="num">35,1K</td><td class="num">2,93%</td><td class="num">36,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DWcdEXFkRVA/" target="_blank">abrir</a></td></tr><tr><td>3</td><td><strong>Leitura Taubaté</strong></td><td>@leiturataubate</td><td class="num">26</td><td class="num">891,5K</td><td class="num">90,0K</td><td class="num">490</td><td class="num">90,4K</td><td class="num">10,15%</td><td class="num">34,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHqcfxjL3O/" target="_blank">abrir</a></td></tr><tr><td>4</td><td><strong>Leitura Uberlândia</strong></td><td>@leiturauberlandia</td><td class="num">5</td><td class="num">487,5K</td><td class="num">430</td><td class="num">26</td><td class="num">456</td><td class="num">0,09%</td><td class="num">97,5K</td><td><a class="lk" href="https://www.instagram.com/reel/DWZVm2Sj1nE/" target="_blank">abrir</a></td></tr><tr><td>5</td><td><strong>Leitura BH</strong></td><td>@leitura.bh</td><td class="num">32</td><td class="num">345,0K</td><td class="num">14,9K</td><td class="num">510</td><td class="num">15,4K</td><td class="num">4,47%</td><td class="num">10,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DV6Pot6DVbr/" target="_blank">abrir</a></td></tr><tr><td>6</td><td><strong>Leitura Nacional</strong></td><td>@livrarialeitura</td><td class="num">50</td><td class="num">333,2K</td><td class="num">22,7K</td><td class="num">867</td><td class="num">23,6K</td><td class="num">7,08%</td><td class="num">6,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWZxRBaieK5/" target="_blank">abrir</a></td></tr><tr><td>7</td><td><strong>Leitura Rio de Janeiro</strong></td><td>@leiturarj</td><td class="num">24</td><td class="num">283,4K</td><td class="num">17,3K</td><td class="num">124</td><td class="num">17,4K</td><td class="num">6,15%</td><td class="num">11,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeU6YukQrw/" target="_blank">abrir</a></td></tr><tr><td>8</td><td><strong>Leitura Recife</strong></td><td>@leiturarecife</td><td class="num">28</td><td class="num">205,1K</td><td class="num">9,9K</td><td class="num">399</td><td class="num">10,3K</td><td class="num">5,01%</td><td class="num">7,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DV64FwwiVw7/" target="_blank">abrir</a></td></tr><tr><td>9</td><td><strong>Leitura João Pessoa</strong></td><td>@leiturajp</td><td class="num">27</td><td class="num">181,0K</td><td class="num">15,7K</td><td class="num">111</td><td class="num">15,8K</td><td class="num">8,73%</td><td class="num">6,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DVmQyP2DiC2/" target="_blank">abrir</a></td></tr><tr><td>10</td><td><strong>Leitura Campina Grande</strong></td><td>@leituracg</td><td class="num">28</td><td class="num">170,4K</td><td class="num">14,0K</td><td class="num">40</td><td class="num">14,0K</td><td class="num">8,23%</td><td class="num">6,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWSJjvQAZf-/" target="_blank">abrir</a></td></tr><tr><td>11</td><td><strong>Leitura Natal</strong></td><td>@leituranatal</td><td class="num">17</td><td class="num">130,5K</td><td class="num">7,3K</td><td class="num">61</td><td class="num">7,3K</td><td class="num">5,61%</td><td class="num">7,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeTlouAKxa/" target="_blank">abrir</a></td></tr><tr><td>12</td><td><strong>Leitura Caruaru</strong></td><td>@leituracaruaru</td><td class="num">27</td><td class="num">128,3K</td><td class="num">5,5K</td><td class="num">28</td><td class="num">5,6K</td><td class="num">4,33%</td><td class="num">4,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DV36HifEWRX/" target="_blank">abrir</a></td></tr><tr><td>13</td><td><strong>Leitura Iguatemi Fortaleza</strong></td><td>@leituraiguatemi</td><td class="num">13</td><td class="num">64,3K</td><td class="num">1,8K</td><td class="num">110</td><td class="num">1,9K</td><td class="num">2,90%</td><td class="num">4,9K</td><td><a class="lk" href="https://www.instagram.com/reel/DVuRJUOgoOp/" target="_blank">abrir</a></td></tr><tr><td>14</td><td><strong>Leitura Olinda</strong></td><td>@leituraolinda</td><td class="num">24</td><td class="num">61,9K</td><td class="num">3,1K</td><td class="num">111</td><td class="num">3,2K</td><td class="num">5,19%</td><td class="num">2,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DV64-uajzJe/" target="_blank">abrir</a></td></tr><tr><td>15</td><td><strong>Leitura Maceió</strong></td><td>@leituramaceio</td><td class="num">53</td><td class="num">49,2K</td><td class="num">2,4K</td><td class="num">154</td><td class="num">2,5K</td><td class="num">5,14%</td><td class="num">928</td><td><a class="lk" href="https://www.instagram.com/reel/DV4ZXuhjhSW/" target="_blank">abrir</a></td></tr><tr><td>16</td><td><strong>Leitura Aracaju</strong></td><td>@leitura.aracaju</td><td class="num">41</td><td class="num">48,8K</td><td class="num">1,3K</td><td class="num">167</td><td class="num">1,5K</td><td class="num">3,07%</td><td class="num">1,2K</td><td><a class="lk" href="https://www.instagram.com/reel/DV9re39gf_l/" target="_blank">abrir</a></td></tr><tr><td>17</td><td><strong>Leitura Piracicaba</strong></td><td>@leiturapiracicaba</td><td class="num">31</td><td class="num">35,3K</td><td class="num">566</td><td class="num">63</td><td class="num">629</td><td class="num">1,78%</td><td class="num">1,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWChgQzjjs_/" target="_blank">abrir</a></td></tr><tr><td>18</td><td><strong>Leitura Mogi</strong></td><td>@leituramogi</td><td class="num">12</td><td class="num">35,0K</td><td class="num">1,7K</td><td class="num">5,0K</td><td class="num">6,6K</td><td class="num">18,98%</td><td class="num">2,9K</td><td><a class="lk" href="https://www.instagram.com/reel/DWADGyMuVFk/" target="_blank">abrir</a></td></tr><tr><td>19</td><td><strong>Leitura Interlagos</strong></td><td>@leiturainterlagos</td><td class="num">16</td><td class="num">33,6K</td><td class="num">4,2K</td><td class="num">41,1K</td><td class="num">45,2K</td><td class="num">134,62%</td><td class="num">2,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHqLHICXFR/" target="_blank">abrir</a></td></tr><tr><td>20</td><td><strong>Leitura Brasília</strong></td><td>@leiturabrasilia</td><td class="num">30</td><td class="num">25,0K</td><td class="num">779</td><td class="num">20</td><td class="num">799</td><td class="num">3,19%</td><td class="num">834</td><td><a class="lk" href="https://www.instagram.com/reel/DVePuTpkcGw/" target="_blank">abrir</a></td></tr><tr><td>21</td><td><strong>Leitura Ibirapuera</strong></td><td>@leituraibirapuera</td><td class="num">11</td><td class="num">18,7K</td><td class="num">596</td><td class="num">7</td><td class="num">603</td><td class="num">3,22%</td><td class="num">1,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHqLHICXFR/" target="_blank">abrir</a></td></tr><tr><td>22</td><td><strong>Leitura North Fortaleza</strong></td><td>@leituranorthfortaleza</td><td class="num">13</td><td class="num">18,7K</td><td class="num">1,2K</td><td class="num">184</td><td class="num">1,4K</td><td class="num">7,37%</td><td class="num">1,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DWjE1GQpgvc/" target="_blank">abrir</a></td></tr><tr><td>23</td><td><strong>Leitura Salvador</strong></td><td>@leiturasalvador</td><td class="num">23</td><td class="num">17,1K</td><td class="num">967</td><td class="num">258</td><td class="num">1,2K</td><td class="num">7,14%</td><td class="num">746</td><td><a class="lk" href="https://www.instagram.com/reel/DWevt7Ngmqe/" target="_blank">abrir</a></td></tr><tr><td>24</td><td><strong>Leitura Amapá</strong></td><td>@leituraamapa</td><td class="num">9</td><td class="num">16,3K</td><td class="num">762</td><td class="num">108</td><td class="num">870</td><td class="num">5,33%</td><td class="num">1,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DWcBNJ6kR1v/" target="_blank">abrir</a></td></tr><tr><td>25</td><td><strong>Leitura Sete Lagoas</strong></td><td>@leitura.setelagoas</td><td class="num">18</td><td class="num">14,2K</td><td class="num">333</td><td class="num">39</td><td class="num">372</td><td class="num">2,61%</td><td class="num">791</td><td><a class="lk" href="https://www.instagram.com/reel/DWFK0MAD5K8/" target="_blank">abrir</a></td></tr><tr><td>26</td><td><strong>Leitura Kennedy</strong></td><td>@leiturakennedy</td><td class="num">12</td><td class="num">13,9K</td><td class="num">54</td><td class="num">59</td><td class="num">113</td><td class="num">0,81%</td><td class="num">1,2K</td><td><a class="lk" href="https://www.instagram.com/reel/DWOyABoijW8/" target="_blank">abrir</a></td></tr><tr><td>27</td><td><strong>Leitura Rio Preto</strong></td><td>@leiturariopreto</td><td class="num">40</td><td class="num">13,8K</td><td class="num">1,1K</td><td class="num">30</td><td class="num">1,1K</td><td class="num">8,19%</td><td class="num">346</td><td><a class="lk" href="https://www.instagram.com/reel/DVd6Us2DQp_/" target="_blank">abrir</a></td></tr><tr><td>28</td><td><strong>Leitura Teresina</strong></td><td>@leituralivrariateresina</td><td class="num">12</td><td class="num">12,9K</td><td class="num">624</td><td class="num">33</td><td class="num">657</td><td class="num">5,09%</td><td class="num">1,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWCvNDGDsgf/" target="_blank">abrir</a></td></tr><tr><td>29</td><td><strong>Leitura Vitória</strong></td><td>@leituravitoria</td><td class="num">19</td><td class="num">12,5K</td><td class="num">193</td><td class="num">23</td><td class="num">216</td><td class="num">1,73%</td><td class="num">657</td><td><a class="lk" href="https://www.instagram.com/reel/DWFK0MAD5K8/" target="_blank">abrir</a></td></tr><tr><td>30</td><td><strong>Leitura Juiz de Fora</strong></td><td>@leiturajuizdefora</td><td class="num">27</td><td class="num">11,8K</td><td class="num">463</td><td class="num">33</td><td class="num">496</td><td class="num">4,20%</td><td class="num">437</td><td><a class="lk" href="https://www.instagram.com/reel/DVy7bebCXs-/" target="_blank">abrir</a></td></tr><tr><td>31</td><td><strong>Leitura Governador Valadares</strong></td><td>@leituragv_</td><td class="num">11</td><td class="num">10,4K</td><td class="num">340</td><td class="num">17</td><td class="num">357</td><td class="num">3,43%</td><td class="num">945</td><td><a class="lk" href="https://www.instagram.com/reel/DVv2e3QjikQ/" target="_blank">abrir</a></td></tr><tr><td>32</td><td><strong>Leitura da Bahia</strong></td><td>@leituradabahia</td><td class="num">23</td><td class="num">9,2K</td><td class="num">589</td><td class="num">114</td><td class="num">703</td><td class="num">7,61%</td><td class="num">402</td><td><a class="lk" href="https://www.instagram.com/reel/DWMoRq-EX9g/" target="_blank">abrir</a></td></tr><tr><td>33</td><td><strong>Leitura Palmas</strong></td><td>@leiturapalmas</td><td class="num">5</td><td class="num">8,5K</td><td class="num">199</td><td class="num">13</td><td class="num">212</td><td class="num">2,50%</td><td class="num">1,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHyleqD2jI/" target="_blank">abrir</a></td></tr><tr><td>34</td><td><strong>Leitura da Ilha</strong></td><td>@leituradailha</td><td class="num">5</td><td class="num">8,2K</td><td class="num">198</td><td class="num">22</td><td class="num">220</td><td class="num">2,68%</td><td class="num">1,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DWXROTqCd0v/" target="_blank">abrir</a></td></tr><tr><td>35</td><td><strong>Leitura Porto Alegre</strong></td><td>@leituraportoalegre</td><td class="num">19</td><td class="num">8,0K</td><td class="num">580</td><td class="num">38</td><td class="num">618</td><td class="num">7,71%</td><td class="num">422</td><td><a class="lk" href="https://www.instagram.com/reel/DWT-beejtGX/" target="_blank">abrir</a></td></tr><tr><td>36</td><td><strong>Leitura Ipatinga</strong></td><td>@leituraipatinga</td><td class="num">10</td><td class="num">7,1K</td><td class="num">105</td><td class="num">2</td><td class="num">107</td><td class="num">1,51%</td><td class="num">710</td><td><a class="lk" href="https://www.instagram.com/reel/DV8qXQtkeSb/" target="_blank">abrir</a></td></tr><tr><td>37</td><td><strong>Leitura Belém</strong></td><td>@leitura.belem</td><td class="num">16</td><td class="num">6,7K</td><td class="num">604</td><td class="num">28</td><td class="num">632</td><td class="num">9,40%</td><td class="num">420</td><td><a class="lk" href="https://www.instagram.com/reel/DV9Y413EfhQ/" target="_blank">abrir</a></td></tr><tr><td>38</td><td><strong>Leitura Anápolis</strong></td><td>@leituraanapolis</td><td class="num">11</td><td class="num">6,0K</td><td class="num">1,0K</td><td class="num">1,0K</td><td class="num">2,0K</td><td class="num">33,97%</td><td class="num">545</td><td><a class="lk" href="https://www.instagram.com/reel/DWEsQCSDfvW/" target="_blank">abrir</a></td></tr><tr><td>39</td><td><strong>Leitura Cuiabá</strong></td><td>@leituracuiaba</td><td class="num">15</td><td class="num">5,6K</td><td class="num">150</td><td class="num">12</td><td class="num">162</td><td class="num">2,87%</td><td class="num">376</td><td><a class="lk" href="https://www.instagram.com/reel/DWgvCvsDQSX/" target="_blank">abrir</a></td></tr><tr><td>40</td><td><strong>Leitura Porto Velho</strong></td><td>@leitura.portovelho</td><td class="num">13</td><td class="num">5,1K</td><td class="num">285</td><td class="num">27</td><td class="num">312</td><td class="num">6,17%</td><td class="num">389</td><td><a class="lk" href="https://www.instagram.com/reel/DWFKpukjWBd/" target="_blank">abrir</a></td></tr><tr><td>41</td><td><strong>Leitura Goiânia</strong></td><td>@leitura.goiania</td><td class="num">16</td><td class="num">5,1K</td><td class="num">536</td><td class="num">85</td><td class="num">621</td><td class="num">12,29%</td><td class="num">316</td><td><a class="lk" href="https://www.instagram.com/reel/DWeP0D2Bi77/" target="_blank">abrir</a></td></tr><tr><td>42</td><td><strong>Leitura Tatuapé</strong></td><td>@leituratatuape</td><td class="num">25</td><td class="num">5,0K</td><td class="num">357</td><td class="num">11</td><td class="num">368</td><td class="num">7,40%</td><td class="num">199</td><td><a class="lk" href="https://www.instagram.com/reel/DVbakkjEamx/" target="_blank">abrir</a></td></tr><tr><td>43</td><td><strong>Leitura Aricanduva</strong></td><td>@leituraaricanduva</td><td class="num">14</td><td class="num">4,5K</td><td class="num">211</td><td class="num">33</td><td class="num">244</td><td class="num">5,43%</td><td class="num">321</td><td><a class="lk" href="https://www.instagram.com/reel/DWB6JGAgB6L/" target="_blank">abrir</a></td></tr><tr><td>44</td><td><strong>Leitura Florianópolis</strong></td><td>@leiturafloripa</td><td class="num">5</td><td class="num">4,4K</td><td class="num">110</td><td class="num">10</td><td class="num">120</td><td class="num">2,73%</td><td class="num">878</td><td><a class="lk" href="https://www.instagram.com/reel/DV4RTR8iW3s/" target="_blank">abrir</a></td></tr><tr><td>45</td><td><strong>Leitura Campo Grande</strong></td><td>@leituracampogrande</td><td class="num">8</td><td class="num">4,1K</td><td class="num">273</td><td class="num">24</td><td class="num">297</td><td class="num">7,24%</td><td class="num">513</td><td><a class="lk" href="https://www.instagram.com/reel/DV1DKHsjjPN/" target="_blank">abrir</a></td></tr><tr><td>46</td><td><strong>Leitura Jundiaí</strong></td><td>@leiturajundiai</td><td class="num">6</td><td class="num">3,9K</td><td class="num">339</td><td class="num">11</td><td class="num">350</td><td class="num">8,91%</td><td class="num">655</td><td><a class="lk" href="https://www.instagram.com/reel/DVZuU2DDxuY/" target="_blank">abrir</a></td></tr><tr><td>47</td><td><strong>Leitura São Luís</strong></td><td>@leiturasaoluis</td><td class="num">3</td><td class="num">3,6K</td><td class="num">130</td><td class="num">14</td><td class="num">144</td><td class="num">3,96%</td><td class="num">1,2K</td><td><a class="lk" href="https://www.instagram.com/reel/DWh4Kn8jJSM/" target="_blank">abrir</a></td></tr><tr><td>48</td><td><strong>Leitura Uberaba</strong></td><td>@leiturauberaba</td><td class="num">4</td><td class="num">3,4K</td><td class="num">129</td><td class="num">26</td><td class="num">155</td><td class="num">4,53%</td><td class="num">856</td><td><a class="lk" href="https://www.instagram.com/reel/DVZbqEUiYLd/" target="_blank">abrir</a></td></tr><tr><td>49</td><td><strong>Leitura ABC</strong></td><td>@leitura.abc</td><td class="num">4</td><td class="num">3,4K</td><td class="num">107</td><td class="num">22</td><td class="num">129</td><td class="num">3,80%</td><td class="num">849</td><td><a class="lk" href="https://www.instagram.com/reel/DV4BTZDjp9q/" target="_blank">abrir</a></td></tr><tr><td>50</td><td><strong>Leitura Parangaba</strong></td><td>@leituraparangaba</td><td class="num">16</td><td class="num">2,9K</td><td class="num">195</td><td class="num">11</td><td class="num">206</td><td class="num">7,00%</td><td class="num">184</td><td><a class="lk" href="https://www.instagram.com/reel/DWbyxN8kXzi/" target="_blank">abrir</a></td></tr><tr><td>51</td><td><strong>Leitura Plaza Sul</strong></td><td>@leituraplazasul</td><td class="num">9</td><td class="num">2,8K</td><td class="num">27</td><td class="num">4</td><td class="num">31</td><td class="num">1,10%</td><td class="num">312</td><td><a class="lk" href="https://www.instagram.com/reel/DWY9EIuDTBP/" target="_blank">abrir</a></td></tr><tr><td>52</td><td><strong>Leitura Praia da Costa</strong></td><td>@leiturapraiadacosta</td><td class="num">6</td><td class="num">2,4K</td><td class="num">173</td><td class="num">9</td><td class="num">182</td><td class="num">7,53%</td><td class="num">403</td><td><a class="lk" href="https://www.instagram.com/reel/DV8w5JYRZPf/" target="_blank">abrir</a></td></tr><tr><td>53</td><td><strong>Leitura Betim</strong></td><td>@leiturabetim</td><td class="num">16</td><td class="num">2,3K</td><td class="num">62</td><td class="num">2</td><td class="num">64</td><td class="num">2,73%</td><td class="num">146</td><td><a class="lk" href="https://www.instagram.com/reel/DVqsgWRlB31/" target="_blank">abrir</a></td></tr><tr><td>54</td><td><strong>Leitura Campos</strong></td><td>@leituracampos</td><td class="num">14</td><td class="num">2,3K</td><td class="num">174</td><td class="num">36</td><td class="num">210</td><td class="num">9,01%</td><td class="num">167</td><td><a class="lk" href="https://www.instagram.com/reel/DV4dJQQAX-K/" target="_blank">abrir</a></td></tr><tr><td>55</td><td><strong>Leitura Contagem</strong></td><td>@leiturashoppingcontagem</td><td class="num">28</td><td class="num">1,9K</td><td class="num">238</td><td class="num">16</td><td class="num">254</td><td class="num">13,11%</td><td class="num">69</td><td><a class="lk" href="https://www.instagram.com/reel/DVbm_fCjp_0/" target="_blank">abrir</a></td></tr><tr><td>56</td><td><strong>Leitura Shopping Light</strong></td><td>@leiturashoppinglight</td><td class="num">25</td><td class="num">1,8K</td><td class="num">293</td><td class="num">8</td><td class="num">301</td><td class="num">16,43%</td><td class="num">73</td><td><a class="lk" href="https://www.instagram.com/reel/DVev_AxDcmG/" target="_blank">abrir</a></td></tr><tr><td>57</td><td><strong>Leitura Jardim Sul</strong></td><td>@leiturajardimsul</td><td class="num">23</td><td class="num">1,5K</td><td class="num">156</td><td class="num">4</td><td class="num">160</td><td class="num">10,68%</td><td class="num">65</td><td><a class="lk" href="https://www.instagram.com/reel/DVgVmZggnsR/" target="_blank">abrir</a></td></tr><tr><td>58</td><td><strong>Leitura Vila Velha</strong></td><td>@leiturashoppingvilavelha</td><td class="num">5</td><td class="num">1,2K</td><td class="num">53</td><td class="num">0</td><td class="num">53</td><td class="num">4,50%</td><td class="num">236</td><td><a class="lk" href="https://www.instagram.com/reel/DVhFXx9kbXd/" target="_blank">abrir</a></td></tr><tr><td>59</td><td><strong>Leitura Itaquera</strong></td><td>@leitura.itaquera</td><td class="num">19</td><td class="num">1,1K</td><td class="num">59</td><td class="num">4</td><td class="num">63</td><td class="num">5,98%</td><td class="num">55</td><td><a class="lk" href="https://www.instagram.com/reel/DVmfG_VD0IE/" target="_blank">abrir</a></td></tr><tr><td>60</td><td><strong>Leitura São José dos Campos</strong></td><td>@leitura.sjc</td><td class="num">18</td><td class="num">1,0K</td><td class="num">263</td><td class="num">8</td><td class="num">271</td><td class="num">26,94%</td><td class="num">56</td><td><a class="lk" href="https://www.instagram.com/reel/DVgQHsnjhzh/" target="_blank">abrir</a></td></tr><tr><td>61</td><td><strong>Leitura Indaiatuba</strong></td><td>@leituraindaiatuba</td><td class="num">4</td><td class="num">835</td><td class="num">147</td><td class="num">8</td><td class="num">155</td><td class="num">18,56%</td><td class="num">209</td><td><a class="lk" href="https://www.instagram.com/reel/DVg7wOLjwAf/" target="_blank">abrir</a></td></tr><tr><td>62</td><td><strong>Leitura Osasco</strong></td><td>@leituraosasco</td><td class="num">21</td><td class="num">818</td><td class="num">141</td><td class="num">16</td><td class="num">157</td><td class="num">19,19%</td><td class="num">39</td><td><a class="lk" href="https://www.instagram.com/reel/DVeexLZDJKg/" target="_blank">abrir</a></td></tr><tr><td>63</td><td><strong>Leitura SP Market</strong></td><td>@leituraspmarket</td><td class="num">17</td><td class="num">808</td><td class="num">79</td><td class="num">5</td><td class="num">84</td><td class="num">10,40%</td><td class="num">48</td><td><a class="lk" href="https://www.instagram.com/reel/DWWxiepDlVv/" target="_blank">abrir</a></td></tr><tr><td>64</td><td><strong>Leitura SB Plaza</strong></td><td>@leiturasbplaza</td><td class="num">33</td><td class="num">709</td><td class="num">354</td><td class="num">48</td><td class="num">402</td><td class="num">56,70%</td><td class="num">21</td><td><a class="lk" href="https://www.instagram.com/reel/DVtIbNtDo-C/" target="_blank">abrir</a></td></tr><tr><td>65</td><td><strong>Leitura Santana</strong></td><td>@leiturapartagesantana</td><td class="num">31</td><td class="num">655</td><td class="num">47</td><td class="num">2</td><td class="num">49</td><td class="num">7,48%</td><td class="num">21</td><td><a class="lk" href="https://www.instagram.com/reel/DVd6NnUkWz9/" target="_blank">abrir</a></td></tr><tr><td>66</td><td><strong>Leitura Del Paseo</strong></td><td>@leituradelpaseo</td><td class="num">47</td><td class="num">289</td><td class="num">1,0K</td><td class="num">20</td><td class="num">1,0K</td><td class="num">357,44%</td><td class="num">6</td><td><a class="lk" href="https://www.instagram.com/reel/DV8xU3dDckF/" target="_blank">abrir</a></td></tr><tr><td>67</td><td><strong>Leitura West Plaza</strong></td><td>@leiturawestplaza</td><td class="num">14</td><td class="num">221</td><td class="num">34</td><td class="num">0</td><td class="num">34</td><td class="num">15,38%</td><td class="num">16</td><td><a class="lk" href="https://www.instagram.com/reel/DVmC4uNlBSL/" target="_blank">abrir</a></td></tr><tr><td>68</td><td><strong>Leitura Travel Guarulhos</strong></td><td>@leituratravelguarulhos</td><td class="num">9</td><td class="num">220</td><td class="num">76</td><td class="num">0</td><td class="num">76</td><td class="num">34,55%</td><td class="num">24</td><td><a class="lk" href="https://www.instagram.com/reel/DVluU5HjWeJ/" target="_blank">abrir</a></td></tr><tr><td>69</td><td><strong>Leitura Mestre Álvaro</strong></td><td>@mestrealvaro_leitura</td><td class="num">10</td><td class="num">200</td><td class="num">63</td><td class="num">0</td><td class="num">63</td><td class="num">31,50%</td><td class="num">20</td><td><a class="lk" href="https://www.instagram.com/reel/DVt2LL6EXxe/" target="_blank">abrir</a></td></tr><tr><td>70</td><td><strong>Leitura Mooca</strong></td><td>@leituramooca</td><td class="num">25</td><td class="num">142</td><td class="num">48</td><td class="num">3</td><td class="num">51</td><td class="num">35,92%</td><td class="num">6</td><td><a class="lk" href="https://www.instagram.com/reel/DVf-0HDDSvY/" target="_blank">abrir</a></td></tr><tr><td>71</td><td><strong>Leitura RioMar Fortaleza</strong></td><td>@leiturariomarfortaleza</td><td class="num">6</td><td class="num">0</td><td class="num">18</td><td class="num">75</td><td class="num">93</td><td class="num">0,00%</td><td class="num">0</td><td><a class="lk" href="https://www.instagram.com/p/DV8kuqzkbY9/" target="_blank">abrir</a></td></tr><tr><td>72</td><td><strong>Leitura Caxias do Sul</strong></td><td>@leitura.cxs</td><td class="num">5</td><td class="num">0</td><td class="num">24</td><td class="num">0</td><td class="num">24</td><td class="num">0,00%</td><td class="num">0</td><td><a class="lk" href="https://www.instagram.com/p/DWZvYbhD9oq/" target="_blank">abrir</a></td></tr><tr><td>73</td><td><strong>Leitura Tietê Plaza</strong></td><td>@leituratieteplaza</td><td class="num">3</td><td class="num">0</td><td class="num">26</td><td class="num">0</td><td class="num">26</td><td class="num">0,00%</td><td class="num">0</td><td><a class="lk" href="https://www.instagram.com/p/DWhX_PcFX-4/" target="_blank">abrir</a></td></tr>
+  </tbody></table></div></div>
+</div>
+<div class="page" id="p2">
+  <div class="ph"><h1>Top posts</h1><p>50 publicações com maior alcance/views na planilha.</p></div>
+  <input class="srch" id="qPosts" placeholder="🔍 Buscar post, loja, autor ou categoria..." oninput="filterTable('qPosts','tbPosts')">
+  <div class="card"><div class="tw" style="max-height:650px"><table><thead><tr><th>#</th><th>Loja</th><th>Autor</th><th>Categoria</th><th>Data</th><th class="num">Views</th><th class="num">Eng.</th><th>Link</th><th>Legenda</th></tr></thead><tbody id="tbPosts">
+    <tr><td>1</td><td><strong>Leitura Campinas</strong><br><span style="color:var(--mut);font-size:10px">@leituracampinas</span></td><td>yasmincomitreoficial</td><td><span class="pill">Reel</span></td><td>20/03/2026</td><td class="num">1,4M</td><td class="num">150,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWH9PM1EUjA/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O pior é que é LITERALMENTE assim KKKKKK usando @ocadernointeligente da @brunatavares que comprei na @leituracampinas   #viral #escola #fy #letra #egípcios</td></tr><tr><td>2</td><td><strong>Leitura Taubaté</strong><br><span style="color:var(--mut);font-size:10px">@leiturataubate</span></td><td>leiturataubate</td><td><span class="pill">Reel</span></td><td>20/03/2026</td><td class="num">792,3K</td><td class="num">88,5K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHqcfxjL3O/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Um show especial!😂📚  #livrarialeitura #leiturataubate #taubateshopping #taubate #valedoparaiba  #reels</td></tr><tr><td>3</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>28/03/2026</td><td class="num">284,3K</td><td class="num">3,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DWcdEXFkRVA/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Chegaram os Funko Pop🔥😱  Tem do herói ao vilão. Qual o seu favorito? 👀  #leituraamazonas #livrarialeitura #funkopop</td></tr><tr><td>4</td><td><strong>Leitura Uberlândia</strong><br><span style="color:var(--mut);font-size:10px">@leiturauberlandia</span></td><td>tvparanaiba</td><td><span class="pill">Reel</span></td><td>27/03/2026</td><td class="num">248,3K</td><td class="num">133</td><td><a class="lk" href="https://www.instagram.com/reel/DWZVm2Sj1nE/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Às vezes é mais fácil ouvir o outro do que encarar a própria história… né? 👀📖  Em “Os Esquecidos de Domingo”, de Valérie Perrin, uma amizade improvável revela segredos, memórias </td></tr><tr><td>5</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>10/03/2026</td><td class="num">233,1K</td><td class="num">4,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DVt_FIykaYw/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Quem também ama? 📖🥰  #leituraamazonas #livrarialeitura #booktagram</td></tr><tr><td>6</td><td><strong>Leitura Uberlândia</strong><br><span style="color:var(--mut);font-size:10px">@leiturauberlandia</span></td><td>tvparanaiba</td><td><span class="pill">Reel</span></td><td>13/03/2026</td><td class="num">231,2K</td><td class="num">114</td><td><a class="lk" href="https://www.instagram.com/reel/DV1frfLj6hw/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">É possível recomeçar depois de tanta dor?  A história de Gisèle Pelicot fala sobre coragem, silêncio quebrado e a força de seguir em frente.  Você encontra esse e muitos outros tít</td></tr><tr><td>7</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>11/03/2026</td><td class="num">195,6K</td><td class="num">3,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DVuTL5Okbyf/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Qual livro você acha que todo jovem adulto deveria ler? 🫣📖  Em A gente mira no amor e acerta na solidão, Ana Suy traz reflexões sensíveis sobre amor, relações e as complexidades </td></tr><tr><td>8</td><td><strong>Leitura Nacional</strong><br><span style="color:var(--mut);font-size:10px">@livrarialeitura</span></td><td>thiago.chacota</td><td><span class="pill">Reel</span></td><td>27/03/2026</td><td class="num">182,9K</td><td class="num">690</td><td><a class="lk" href="https://www.instagram.com/reel/DWZxRBaieK5/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Dia 01/04 começa a pré venda do álbum na livraria leitura!  Vamos colecionar o álbum da copa do mundo juntos!!   #copadomundo #seleçāobrasileira</td></tr><tr><td>9</td><td><strong>Leitura Campinas</strong><br><span style="color:var(--mut);font-size:10px">@leituracampinas</span></td><td>leituracampinas</td><td><span class="pill">Reel</span></td><td>07/03/2026</td><td class="num">146,2K</td><td class="num">21,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DVli4AslBLm/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Esse mangá tão aguardado chegou por aqui e já conquistou todos os nossos corações 💜  Garanta já seu exemplar com brindes!  Disponível aqui na Livraria Leitura do Parque Dom Pedro </td></tr><tr><td>10</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>05/03/2026</td><td class="num">142,5K</td><td class="num">425</td><td><a class="lk" href="https://www.instagram.com/reel/DVgyY0BkWi3/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Chegou o Vade Mecum 2026 41ª  edição da Saraiva.🙌⚖️  A nova edição traz atualizações importantes, além de novos regulamentos e alterações legislativas do último ano.  E o melhor ?</td></tr><tr><td>11</td><td><strong>Leitura Campinas</strong><br><span style="color:var(--mut);font-size:10px">@leituracampinas</span></td><td>leituracampinas</td><td><span class="pill">Reel</span></td><td>18/03/2026</td><td class="num">110,6K</td><td class="num">11,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DWClLIdjxL6/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">📚✨ Atenção fãs de mangá!  Vem aí sessão de autógrafos com Glitch Tellend, autor de Sense Life, na Leitura Parque Dom Pedro!  📅 21/03 ⏰ 13h 📍 Leitura Parque Dom Pedro – Campinas/</td></tr><tr><td>12</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>21/03/2026</td><td class="num">106,3K</td><td class="num">8,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWKmk1mkUsc/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Tá sabendo do dia de ler Tolkien? 📖👀  O dia de ler Tolkien é uma celebração mundial dedicada à leitura das obras que marcaram gerações.  No dia 28/03, ás 19h, a Leitura vai se tr</td></tr><tr><td>13</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>14/03/2026</td><td class="num">65,6K</td><td class="num">1,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DV4jM5VEWp8/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O dia a dia do livreiro sempre vem acompanhado de perguntas… e hoje resolvemos separar algumas que todo livreiro já ouviu por aqui. 😄  Mas a verdade é que, entre uma pergunta e ou</td></tr><tr><td>14</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">62,2K</td><td class="num">2,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeU6YukQrw/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Alguém mais? 😂  #livrosemaislivros #leitura #leitores #riodejaneiro</td></tr><tr><td>15</td><td><strong>Leitura Taubaté</strong><br><span style="color:var(--mut);font-size:10px">@leiturataubate</span></td><td>taubateshopping</td><td><span class="pill">Reel</span></td><td>14/03/2026</td><td class="num">61,5K</td><td class="num">63</td><td><a class="lk" href="https://www.instagram.com/reel/DV3w6xmFKHT/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Ainda dá tempo de escolher a sua leitura de março 📚✨  Em celebração ao Mês das Mulheres, as indicações deste mês trazem títulos especiais selecionados pela Livraria Leitura do Tau</td></tr><tr><td>16</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>27/03/2026</td><td class="num">56,7K</td><td class="num">2,0K</td><td><a class="lk" href="https://www.instagram.com/reel/DWZ1vOSkZQn/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Aquecimento pra Copa oficialmente liberado aqui na Leitura! 🔥⚽️  Chegaram as Cápsulas surpresas da Copa do mundo 2026 com mini bonecos colecionáveis. Os modelos são sortidos e ao </td></tr><tr><td>17</td><td><strong>Leitura Campinas</strong><br><span style="color:var(--mut);font-size:10px">@leituracampinas</span></td><td>editorampeg</td><td><span class="pill">Reel</span></td><td>22/03/2026</td><td class="num">51,3K</td><td class="num">2,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DWMCrBmCKgb/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Tour de autógrafos - 1° Parada - Livraria Leitura Campinas, SP💜 • • • • • • • • • • #senselife #anirap #mangá #leitura</td></tr><tr><td>18</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>22/03/2026</td><td class="num">47,2K</td><td class="num">1,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DWMVE1JjnCH/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O empurrão que eu precisava 😂  #leitores #leitura #livraria #riodejaneiro</td></tr><tr><td>19</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>15/03/2026</td><td class="num">45,6K</td><td class="num">2,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DV65VKAgc5f/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Querer ler tudo é maravilhoso… difícil é escolher o próximo livro 📚🤯  #livrosemaislivros #leitores #riodejaneiro #rj</td></tr><tr><td>20</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>05/03/2026</td><td class="num">44,0K</td><td class="num">2,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DVgkyyxDotO/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Passar, entrar, folhear… e deixar o dia um pouco mais leve ✨📚  #livraria #leitores #livroseleitura #riodejaneiro</td></tr><tr><td>21</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>20/03/2026</td><td class="num">43,1K</td><td class="num">2,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHJ45-DSCB/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Drama de quem lê 📚🥲  #leitores #livroseleituras #riodejaneiro</td></tr><tr><td>22</td><td><strong>Leitura Campina Grande</strong><br><span style="color:var(--mut);font-size:10px">@leituracg</span></td><td>leituracg</td><td><span class="pill">Reel</span></td><td>24/03/2026</td><td class="num">42,4K</td><td class="num">357</td><td><a class="lk" href="https://www.instagram.com/reel/DWSJjvQAZf-/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Chama os amigos! Feira de livros até 30/04 📚  #livrosemaislivros #livraria #promocao #campinagrandepb</td></tr><tr><td>23</td><td><strong>Leitura João Pessoa</strong><br><span style="color:var(--mut);font-size:10px">@leiturajp</span></td><td>leiturajp</td><td><span class="pill">Reel</span></td><td>07/03/2026</td><td class="num">42,2K</td><td class="num">2,2K</td><td><a class="lk" href="https://www.instagram.com/reel/DVmQyP2DiC2/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Passar, entrar, folhear… e deixar o dia um pouco mais leve ✨📚  #livraria #leitores #livroseleitura #joaopessoapb</td></tr><tr><td>24</td><td><strong>Leitura João Pessoa</strong><br><span style="color:var(--mut);font-size:10px">@leiturajp</span></td><td>leiturajp</td><td><span class="pill">Reel</span></td><td>24/03/2026</td><td class="num">41,8K</td><td class="num">1,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWR4vEBicyt/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Contamos com a sua presença 💙  #livroseleitura #livroscristãos #livrosnovos #joaopessoapb</td></tr><tr><td>25</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>15/03/2026</td><td class="num">39,2K</td><td class="num">1,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DV6Pot6DVbr/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #belohorizontemg</td></tr><tr><td>26</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>30/03/2026</td><td class="num">37,7K</td><td class="num">1,0K</td><td><a class="lk" href="https://www.instagram.com/reel/DWg3wTnjKxU/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Talvez o problema não seja o livro 💅  #livrosdefantasia #guerradostronos #belohorizontemg</td></tr><tr><td>27</td><td><strong>Leitura Natal</strong><br><span style="color:var(--mut);font-size:10px">@leituranatal</span></td><td>leituranatal</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">37,5K</td><td class="num">1,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeTlouAKxa/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Novos boxes de mangás na área 🔥  Coleções completas, capas incríveis e histórias que prendem do início ao fim.  Vem pra Leitura garantir o seu!  #mangas #otakubr #livraria #natals</td></tr><tr><td>28</td><td><strong>Leitura João Pessoa</strong><br><span style="color:var(--mut);font-size:10px">@leiturajp</span></td><td>leiturajp</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">37,2K</td><td class="num">1,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeSSzBDivq/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Querer ler tudo é maravilhoso… difícil é escolher o próximo livro 📚🤯  #livrosemaislivros #leitura #leitores #joaopessoapb</td></tr><tr><td>29</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">36,9K</td><td class="num">1,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeRuQIDWLJ/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Deixe um comentário!  #leitores #livrosemaislivros #leitura #belohorizonte</td></tr><tr><td>30</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>07/03/2026</td><td class="num">36,6K</td><td class="num">1,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DVlysX2jag3/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Querer ler tudo é maravilhoso… difícil é escolher o próximo livro 📚🤯  #livrosemaislivros #leitores #belohorizontemg</td></tr><tr><td>31</td><td><strong>Leitura Campinas</strong><br><span style="color:var(--mut);font-size:10px">@leituracampinas</span></td><td>darksidebooks</td><td><span class="pill">Reel</span></td><td>09/03/2026</td><td class="num">36,2K</td><td class="num">1,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DVrUxX9gDFl/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O que você faria ao encontrar Ghostface enquanto procura seu livro de terror favorito na sua livraria favorita? 🔪  📹: @lucascmetropolo</td></tr><tr><td>32</td><td><strong>Leitura Nacional</strong><br><span style="color:var(--mut);font-size:10px">@livrarialeitura</span></td><td>darksidebooks</td><td><span class="pill">Reel</span></td><td>09/03/2026</td><td class="num">36,2K</td><td class="num">1,6K</td><td><a class="lk" href="https://www.instagram.com/reel/DVrUxX9gDFl/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O que você faria ao encontrar Ghostface enquanto procura seu livro de terror favorito na sua livraria favorita? 🔪  📹: @lucascmetropolo</td></tr><tr><td>33</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>20/03/2026</td><td class="num">35,5K</td><td class="num">1,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWHIxCGjaLS/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Nada como reviver a sua saga favorita como se fosse a primeira vez 😌  #livrosemaislivros #harrypotter #potterheads #belohorizonte</td></tr><tr><td>34</td><td><strong>Leitura Recife</strong><br><span style="color:var(--mut);font-size:10px">@leiturarecife</span></td><td>leiturarecife</td><td><span class="pill">Reel</span></td><td>15/03/2026</td><td class="num">35,0K</td><td class="num">922</td><td><a class="lk" href="https://www.instagram.com/reel/DV64FwwiVw7/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Sempre a mesma história… 😅  #compras #livroseleituras #leitores #recifepe</td></tr><tr><td>35</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>02/03/2026</td><td class="num">32,9K</td><td class="num">781</td><td><a class="lk" href="https://www.instagram.com/reel/DVYx3qcjafT/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Uma passada na Leitura e o dia já fica melhor 😌  #leitores #livrosemaislivros #livraria #belohorizontemg</td></tr><tr><td>36</td><td><strong>Leitura Recife</strong><br><span style="color:var(--mut);font-size:10px">@leiturarecife</span></td><td>leiturarecife</td><td><span class="pill">Reel</span></td><td>01/03/2026</td><td class="num">32,9K</td><td class="num">1,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DVUoFUbiTdm/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Como eu posso explicar? 😅  #livrosderomance #livroseleituras #recifepe</td></tr><tr><td>37</td><td><strong>Leitura Natal</strong><br><span style="color:var(--mut);font-size:10px">@leituranatal</span></td><td>leituranatal</td><td><span class="pill">Reel</span></td><td>30/03/2026</td><td class="num">32,7K</td><td class="num">1,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DWg4mFLFOBD/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #natalrn</td></tr><tr><td>38</td><td><strong>Leitura Campina Grande</strong><br><span style="color:var(--mut);font-size:10px">@leituracg</span></td><td>leituracg</td><td><span class="pill">Reel</span></td><td>05/03/2026</td><td class="num">32,5K</td><td class="num">495</td><td><a class="lk" href="https://www.instagram.com/reel/DVe-HmTAIE8/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Chama os amigos! Feira de livros até 31/03 📚💙  #livrosemaislivros #leitores #campinagrande #campinagrandetem</td></tr><tr><td>39</td><td><strong>Leitura Natal</strong><br><span style="color:var(--mut);font-size:10px">@leituranatal</span></td><td>leituranatal</td><td><span class="pill">Reel</span></td><td>05/03/2026</td><td class="num">32,3K</td><td class="num">1,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DVglTr1ANP9/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Querer ler tudo é maravilhoso… difícil é escolher o próximo livro 📚🤯  #livroseleituras #leitores #natalriograndedonorte #natalrn</td></tr><tr><td>40</td><td><strong>Leitura João Pessoa</strong><br><span style="color:var(--mut);font-size:10px">@leiturajp</span></td><td>leiturajp</td><td><span class="pill">Reel</span></td><td>19/03/2026</td><td class="num">31,8K</td><td class="num">1,7K</td><td><a class="lk" href="https://www.instagram.com/reel/DWEneodjlj3/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #joaopessoapb</td></tr><tr><td>41</td><td><strong>Leitura Rio de Janeiro</strong><br><span style="color:var(--mut);font-size:10px">@leiturarj</span></td><td>leiturarj</td><td><span class="pill">Reel</span></td><td>30/03/2026</td><td class="num">31,1K</td><td class="num">2,3K</td><td><a class="lk" href="https://www.instagram.com/reel/DWg5fLbjok_/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #riodejaneiro</td></tr><tr><td>42</td><td><strong>Leitura Recife</strong><br><span style="color:var(--mut);font-size:10px">@leiturarecife</span></td><td>leiturarecife</td><td><span class="pill">Reel</span></td><td>30/03/2026</td><td class="num">31,0K</td><td class="num">839</td><td><a class="lk" href="https://www.instagram.com/reel/DWg4W_0iRGh/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Uma passada na Leitura e o dia já fica melhor 😌  #leitores #livrosemaislivros #livraria #recifepe</td></tr><tr><td>43</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>01/03/2026</td><td class="num">30,9K</td><td class="num">1,8K</td><td><a class="lk" href="https://www.instagram.com/reel/DVUnVtqjYq2/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Como eu posso explicar? 😅  #livrosderomance #livroseleituras #belohorizonte</td></tr><tr><td>44</td><td><strong>Leitura Caruaru</strong><br><span style="color:var(--mut);font-size:10px">@leituracaruaru</span></td><td>leituracaruaru</td><td><span class="pill">Reel</span></td><td>14/03/2026</td><td class="num">30,3K</td><td class="num">921</td><td><a class="lk" href="https://www.instagram.com/reel/DV36HifEWRX/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Meu lugar favorito 📚🥰  #livroseleituras #livraria #leitores #caruarupe</td></tr><tr><td>45</td><td><strong>Leitura Amazonas</strong><br><span style="color:var(--mut);font-size:10px">@leitura.amazonas</span></td><td>leitura.amazonas</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">30,2K</td><td class="num">1,2K</td><td><a class="lk" href="https://www.instagram.com/reel/DWfDIgyETTb/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Um clube do livro para chamar de seu💙📚  Ontem tivemos nosso primeiro encontro de 2026, com a leitura do livro A última carta, da Rebecca Yarros📖  Um momento caloroso, aonde comp</td></tr><tr><td>46</td><td><strong>Leitura Campina Grande</strong><br><span style="color:var(--mut);font-size:10px">@leituracg</span></td><td>leituracg</td><td><span class="pill">Reel</span></td><td>15/03/2026</td><td class="num">29,6K</td><td class="num">940</td><td><a class="lk" href="https://www.instagram.com/reel/DV64ZjUgX3A/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #campinagrande</td></tr><tr><td>47</td><td><strong>Leitura Iguatemi Fortaleza</strong><br><span style="color:var(--mut);font-size:10px">@leituraiguatemi</span></td><td>iguatemifortaleza</td><td><span class="pill">Reel</span></td><td>10/03/2026</td><td class="num">29,3K</td><td class="num">469</td><td><a class="lk" href="https://www.instagram.com/reel/DVuRJUOgoOp/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">O Iguatemi Bosque foi palco de uma noite especial para o empreendedorismo cearense.   Em parceria com a @leituraiguatemi, recebemos o lançamento oficial do livro “Enquanto uns fala</td></tr><tr><td>48</td><td><strong>Leitura BH</strong><br><span style="color:var(--mut);font-size:10px">@leitura.bh</span></td><td>leitura.bh</td><td><span class="pill">Reel</span></td><td>06/03/2026</td><td class="num">28,8K</td><td class="num">2,4K</td><td><a class="lk" href="https://www.instagram.com/reel/DVj1kSVjXCu/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Drama de quem lê 📚🥲  #livrosemaislivros #leitores #belohorizontemg</td></tr><tr><td>49</td><td><strong>Leitura Caruaru</strong><br><span style="color:var(--mut);font-size:10px">@leituracaruaru</span></td><td>leituracaruaru</td><td><span class="pill">Reel</span></td><td>29/03/2026</td><td class="num">27,3K</td><td class="num">1,1K</td><td><a class="lk" href="https://www.instagram.com/reel/DWeUQDNkQXI/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #caruarupe</td></tr><tr><td>50</td><td><strong>Leitura Recife</strong><br><span style="color:var(--mut);font-size:10px">@leiturarecife</span></td><td>leiturarecife</td><td><span class="pill">Reel</span></td><td>13/03/2026</td><td class="num">26,0K</td><td class="num">1,5K</td><td><a class="lk" href="https://www.instagram.com/reel/DV1pveFCZMo/" target="_blank">abrir</a></td><td style="max-width:420px;overflow:hidden;text-overflow:ellipsis">Terapêutico 🧘  #livrosemaislivros #leitura #livraria #recifepe</td></tr>
+  </tbody></table></div></div>
+</div>
+<script>
+const chartLabels=["Campinas","Amazonas","Taubaté","Uberlândia","BH","Nacional","Rio de Janeiro","Recife","João Pessoa","Campina Grande"];
+const chartViews=[1745660,1196741,891460,487466,344979,333208,283369,205053,181009,170405];
+const chartEngLabels=["Campinas","Taubaté","Interlagos","Amazonas","Nacional","Rio de Janeiro","João Pessoa","BH","Campina Grande","Recife"];
+const chartEng=[195634,90448,45246,35100,23603,17422,15795,15422,14032,10265];
+function go(i){document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));document.querySelectorAll('.page').forEach((p,idx)=>p.classList.toggle('active',idx===i));}
+function filterTable(inputId, tbodyId){const q=document.getElementById(inputId).value.toLowerCase();document.querySelectorAll('#'+tbodyId+' tr').forEach(tr=>{tr.style.display=tr.innerText.toLowerCase().includes(q)?'':'none'});}
+function F(v){if(v>=1e6)return(v/1e6).toFixed(1).replace('.',',')+'M';if(v>=1e3)return(v/1e3).toFixed(1).replace('.',',')+'K';return Math.round(v).toLocaleString('pt-BR')}
+function hbar(id, labels, data, color){const c=document.getElementById(id); if(!c)return; new Chart(c,{type:'bar',data:{labels,datasets:[{data,backgroundColor:color+'cc',borderColor:color,borderWidth:1,borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>' '+F(x.raw)}}},scales:{x:{ticks:{callback:F,color:'#64748b'},grid:{color:'rgba(0,0,0,.04)'}},y:{ticks:{color:'#64748b',font:{size:10}},grid:{display:false}}}}})}
+hbar('chViews', chartLabels, chartViews, '#0f172a');
+hbar('chEng', chartEngLabels, chartEng, '#10b981');
+</script>
+</body>
+</html>
